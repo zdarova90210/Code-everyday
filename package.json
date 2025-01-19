@@ -1,0 +1,15 @@
+{
+  "name": "code-everyday",
+  "version": "1.0.0",
+  "description": "Этот репозиторий для моей личной практики программирования. Здесь я решаю задачи и пробую разные технологии.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
