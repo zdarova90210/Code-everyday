@@ -1,4 +1,4 @@
-let container = document.querySelector(".container");
+let gridContainerEl = document.querySelector(".gridContainer");
 let gridButton = document.getElementById("submit-grid");
 let clearGridButton = document.getElementById("clear-grid");
 let gridWidth = document.getElementById("width-range");
@@ -41,7 +41,7 @@ const isTouchDevice = () => {
 isTouchDevice();
 
 gridButton.addEventListener("click", () => {
-    container.innerHTML = "";
+    gridContainerEl.innerHTML = "";
     let count = 0;
     for (let i = 0; i < gridHeight.value; i++) {
         count += 2;
@@ -51,10 +51,11 @@ gridButton.addEventListener("click", () => {
         for (let j = 0; j < gridWidth.value; j++) {
             count += 2;
             let col = document.createElement("div");
-            col.classList.add("gridCol");
-            col.setAttribute("id", `gridCol${count}`);
+            col.classList.add("gridCell");
+            col.setAttribute("id", `gridCell${count}`);
             col.addEventListener(events[deviceType].down, () => {
                 draw = true;
+                paintBtn.classList.add("active");
                 if (erase) {
                     col.style.backgroundColor = "transparent";
                 } else {
@@ -76,12 +77,12 @@ gridButton.addEventListener("click", () => {
 
             div.appendChild(col);
         }
-        container.appendChild(div);
+        gridContainerEl.appendChild(div);
     }
 });
 
 function checker(elementId) {
-    let gridColumns = document.querySelectorAll(".gridCol");
+    let gridColumns = document.querySelectorAll(".gridCell");
     gridColumns.forEach((element) => {
         if (elementId === element.id) {
             if (draw && !erase) {
@@ -94,15 +95,19 @@ function checker(elementId) {
 }
 
 clearGridButton.addEventListener("click", () => {
-    container.innerHTML = "";
+    gridContainerEl.innerHTML = "";
 });
 
 eraseBtn.addEventListener("click", () => {
     erase = true;
+    eraseBtn.classList.add("active");
+    paintBtn.classList.remove("active");
 });
 
 paintBtn.addEventListener("click", () => {
     erase = false;
+    eraseBtn.classList.remove("active");
+    paintBtn.classList.add("active");
 });
 
 gridWidth.addEventListener("input", () => {
