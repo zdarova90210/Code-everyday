@@ -1,0 +1,17 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql_container
+    ports:
+      - "3306:3306"                      # Проброс порта на локальную машину
+    environment:
+      MYSQL_ROOT_PASSWORD: root          # Задай пароль root
+      MYSQL_DATABASE: example_db         # Имя базы данных
+      MYSQL_USER: user                   # Укажи имя пользователя
+      MYSQL_PASSWORD: password           # Пароль для пользователя
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./init-scripts:/docker-entrypoint-initdb.d/ # Сюда можно положить SQL-скрипты для инициализации
+
+volumes:
+  mysql_data:
