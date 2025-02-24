@@ -1,3 +1,3 @@
-const myArr = [0,1,2,3,4,5];
+const myArr = ['1', '2', '3'];
 
-console.log(myArr.at(2));
+console.log(myArr.map(v => 'x'));

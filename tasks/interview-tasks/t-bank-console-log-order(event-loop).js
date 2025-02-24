@@ -9,7 +9,9 @@ const run = () => {
         console.log('Promise');
         setTimeout(() => {
             console.log('777');
-            resolve(); // Тут важно обратить внимание на то что resolve() находится внутри setTimeout, поэтому микрозадачи .then будут выполнены после setTimeout'ов
+            // Тут важно обратить внимание на то что resolve() находится внутри setTimeout, поэтому микрозадачи .then
+            // будут выполнены после setTimeout'ов
+            resolve();
         }, 0);
     })
         .then(() => {
@@ -27,16 +29,3 @@ const run = () => {
 };
 
 run();
-
-// 1 Promise 4 timeOut 777 then1 then2 timeOut2
-
-
-// Ответ:
-// 1
-// Promise
-// 4
-// timeOut
-// 777
-// then1
-// then2
-// timeOut2
