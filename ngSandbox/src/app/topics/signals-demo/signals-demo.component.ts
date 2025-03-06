@@ -1,22 +1,20 @@
-import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
-import {SignalsDemoChildComponent} from './signals-demo-child/signals-demo-child/signals-demo-child.component';
+import {ChangeDetectionStrategy, Component, computed, signal} from '@angular/core';
 
 @Component({
   template: `
-    <button (click)="increment()">Click me: {{ count() }}</button>
-    <hr>
-    <app-signals-demo-child [count]="count"></app-signals-demo-child>
+    <button (click)="increment()">Print signals</button>
   `,
   standalone: true,
-  imports: [
-    SignalsDemoChildComponent
-  ],
+  imports: [],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SignalsDemoComponent {
   public count = signal(0);
+  public computedCount = computed(() => this.count() * 10);
 
   public increment() {
     this.count.set(this.count() + 1);
+    console.log(this.count());
+    console.log(this.computedCount());
   }
 }
