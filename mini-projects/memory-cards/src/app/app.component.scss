@@ -1,8 +1,10 @@
 .cards-grid {
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 900px;
-  max-height: 680px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  gap: 20px;
+  padding: 20px;
+  width: 500px;
   margin: 0 auto;
   outline: 1px solid white;
 }
