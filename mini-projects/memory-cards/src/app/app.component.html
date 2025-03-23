@@ -1,6 +1,5 @@
 <div class="cards-grid">
-  <!--TODO: Разобраться с track-->
-  @for (value of values; track value) {
+  @for (value of values; track $index) {
     <app-card [value]="value"></app-card>
   }
 </div>

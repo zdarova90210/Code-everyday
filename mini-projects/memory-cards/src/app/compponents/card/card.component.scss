@@ -11,7 +11,11 @@
     transform-style: preserve-3d; // Сохраняем 3D-контекст
     cursor: pointer;
 
-    &:hover {
+    //&:hover {
+    //  transform: rotateY(180deg); // Переворот при наведении
+    //}
+
+    &--opened {
       transform: rotateY(180deg); // Переворот при наведении
     }
 
