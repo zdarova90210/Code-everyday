@@ -1,0 +1,36 @@
+:host {
+  display: block;
+}
+
+.card {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border: 1px solid #ffffff;
+
+  &__header {
+    padding: 8px 12px;
+    text-align: center;
+    border-bottom: 1px solid #a3a3a3;
+
+    h2 {
+      margin: 0;
+    }
+  }
+
+  &__body {
+    padding: 8px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__footer {
+    padding: 8px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top: 1px solid #a3a3a3;
+  }
+}

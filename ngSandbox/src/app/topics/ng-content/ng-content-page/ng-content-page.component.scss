@@ -1,0 +1,10 @@
+:host {
+  display: block;
+
+  app-ng-content-directive {
+    &:not(:first-child) {
+      margin-top: 24px;
+    }
+  }
+}
+
