@@ -1,8 +1,0 @@
-<img src="./img/test-image.png" alt="test-img">
-
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <input type="text" formControlName="answer">
-  <button type="submit" [disabled]="form.invalid" [title]="form.invalid ? 'Please enter at least something' : ''">
-    Send
-  </button>
-</form>
