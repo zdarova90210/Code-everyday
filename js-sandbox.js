@@ -1,0 +1,1 @@
+console.log(Math.ceil(Math.sqrt(10)));
