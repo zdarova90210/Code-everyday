@@ -23,22 +23,22 @@
 // Задача: У тебя есть список студентов с их оценками. Используя reduce, сгруппируй студентов по их оценке.
 // Результатом должен быть объект, где ключи — оценки, а значения — массивы имен студентов.
 
-type Student = { name: string; grade: number };
-
-const students: Student[] = [
-  {name: 'Alice', grade: 5},
-  {name: 'Bob', grade: 4},
-  {name: 'Charlie', grade: 5},
-  {name: 'David', grade: 3},
-  {name: 'Eve', grade: 4}
-];
-
-const result = students.reduce<Record<number, string[]>>((acc, curr) => {
-  (acc[curr.grade] ??= []).push(curr.name);
-  return acc;
-}, {})
-
-console.log(result);
+// type Student = { name: string; grade: number };
+//
+// const students: Student[] = [
+//   {name: 'Alice', grade: 5},
+//   {name: 'Bob', grade: 4},
+//   {name: 'Charlie', grade: 5},
+//   {name: 'David', grade: 3},
+//   {name: 'Eve', grade: 4}
+// ];
+//
+// const result = students.reduce<Record<number, string[]>>((acc, curr) => {
+//   (acc[curr.grade] ??= []).push(curr.name);
+//   return acc;
+// }, {})
+//
+// console.log(result);
 
 // Ожидаемый результат:
 // {
@@ -54,14 +54,24 @@ console.log(result);
 // получить итоговый баланс (сумма всех amount) и список всех уникальных категорий, в которых были траты.
 // Нюанс: не используй Set снаружи, попробуй собрать массив категорий прямо внутри аккумулятора.
 
-// type Transaction = { id: number; amount: number; category: string };
-//
-// const transactions: Transaction[] = [
-//   { id: 1, amount: 100, category: 'Food' },
-//   { id: 2, amount: -50, category: 'Transport' },
-//   { id: 3, amount: 200, category: 'Food' },
-//   { id: 4, amount: -30, category: 'Entertainment' },
-// ];
+type Transaction = { id: number; amount: number; category: string };
+
+const transactions: Transaction[] = [
+  {id: 1, amount: 100, category: 'Food'},
+  {id: 2, amount: -50, category: 'Transport'},
+  {id: 3, amount: 200, category: 'Food'},
+  {id: 4, amount: -30, category: 'Entertainment'},
+];
+
+const result = transactions.reduce<{ totalBalance: number, categories: string[] }>((acc, item) => {
+  acc.totalBalance += item.amount;
+  if (!acc.categories.includes(item.category)) {
+    acc.categories.push(item.category);
+  }
+  return acc;
+}, {totalBalance: 0, categories: []})
+
+console.log(result);
 
 // Ожидаемый результат:
 // {
